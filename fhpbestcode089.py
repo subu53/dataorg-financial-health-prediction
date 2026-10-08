@@ -232,9 +232,9 @@ def create_submission(test_df, probs, thresholds, tmap):
     labels = [inv[i] for i in preds]
     
     sub = pd.DataFrame({'ID': test_df['ID'], 'Target': labels})
-    sub.to_csv('top10_submission.csv', index=False)
+    sub.to_csv('submission.csv', index=False)
     
-    print(f"\n✓ Saved: top10_submission.csv")
+    print(f"\n✓ Saved: submission.csv")
     dist = pd.Series(labels).value_counts()
     for lbl in ['Low', 'Medium', 'High']:
         print(f"  {lbl}: {dist.get(lbl, 0)} ({dist.get(lbl, 0)/len(sub)*100:.1f}%)")
@@ -242,7 +242,7 @@ def create_submission(test_df, probs, thresholds, tmap):
 
 if __name__ == "__main__":
     print("="*70)
-    print("FINANCIAL HEALTH PREDICTION - TOP 10 SOLUTION")
+    print("FINANCIAL HEALTH PREDICTION - data.org challenge on Zindi")
     print("="*70)
     
     train_df, test_df = load_data()
